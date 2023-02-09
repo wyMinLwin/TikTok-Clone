@@ -1,13 +1,22 @@
 import { View, Text, TouchableOpacity } from 'react-native'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 const CategoryButton = (props) => {
     const [selected,setSelected] = useState(false);
+
+    const handleClick = () => {
+      setSelected(prev => !prev);
+      if ( !selected ){
+        props.dispatchSelectedItem({type:'ADD_CATEGORY_ITEM',payload: props.title});
+      } else {
+        props.dispatchSelectedItem({type:'REMOVE_CATEGORY_ITEM',payload: props.title});
+      }
+    }
     
 
   return (
     <TouchableOpacity 
-    onPress={() => setSelected(prev => !prev) }  
+    onPress={() => handleClick() }  
     className='px-5 py-1 rounded-full  m-2 ml-0' 
     style={[{backgroundColor:`${ selected ? '#00008B' : '#FFF'}`, alignItems: 'center'}, 
     {minWidth:50,shadowColor: "#000000",

@@ -1,5 +1,5 @@
 import { View, Text, SafeAreaView, TouchableOpacity, Modal } from 'react-native'
-import React, { useState } from 'react'
+import React, { useEffect, useReducer, useState } from 'react'
 import CategoryButton from '../components/CategoryButton'
 import { useSelector } from 'react-redux';
 import { useNavigation } from '@react-navigation/native';
@@ -7,6 +7,21 @@ import { useNavigation } from '@react-navigation/native';
 const StartChooseScreen = () => {
     const [modelVisible,setModelVisible] = useState(true);
     const categories = useSelector(state => state.categories);
+
+    const selectedItemReducer = (state,action) => {
+        switch (action.type) {
+            case 'ADD_CATEGORY_ITEM':
+                return [...state,action.payload];
+                
+            case 'REMOVE_CATEGORY_ITEM':
+                return state.filter( item => item !== action.payload);
+        
+            default:
+                return state;
+        }
+    }
+
+    const [selectedItem,dispatchSelectedItem] = useReducer(selectedItemReducer,[]);
     
     const navigation = useNavigation();
 
@@ -35,13 +50,13 @@ const StartChooseScreen = () => {
 
             {/* category buttons */}
             <View className='pl-5 mt-3 flex-row flex-wrap'>
-                {categories.map(item => <CategoryButton key={item} title={item} />)}
+                {categories.map(item => <CategoryButton dispatchSelectedItem={dispatchSelectedItem} key={item} title={item} />)}
             </View>
             
            {/* skip and next */}
             <View className='flex-row justify-center mt-auto p-5 pb-1' style={{borderTopWidth:1,marginTop:'auto'}}>
-                <TouchableOpacity onPress={() => navigation.navigate('Swipe')} className='w-6/12 mx-1 p-2 justify-center items-center'  style={{borderWidth:1}}><Text className='font-normal text-lg'>Skip</Text></TouchableOpacity>
-                <TouchableOpacity onPress={() => navigation.navigate('Swipe')} className='w-6/12 mx-1 p-2 justify-center items-center' style={{borderWidth:1}}><Text className='font-normal text-lg'>Next</Text></TouchableOpacity>
+                <TouchableOpacity onPress={() => navigation.navigate('Swipe')} className={`${selectedItem.length > 0 ? 'w-6/12 ' :'w-4/5 '} mx-1 p-2 justify-center items-center`}  style={{borderWidth:1}}><Text className='font-normal text-lg'>Skip</Text></TouchableOpacity>
+                {selectedItem.length > 0 && <TouchableOpacity onPress={() => navigation.navigate('Swipe')} className='w-6/12 mx-1 p-2 justify-center items-center' style={{borderWidth:1}}><Text className='font-normal text-lg'>Next</Text></TouchableOpacity>}
             </View>      
         </View>
         

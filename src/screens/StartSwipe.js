@@ -25,10 +25,10 @@ const StartSwipe = () => {
                 <Text className='text-2xl font-extralight whitespace-normal'>Video recommendations are based on your watch, Like & Share</Text>
             </View>
           </View>
-
+          {/* swipe animation */}
           <View className='w-screen h-full justify-center items-center'>
-            <Image className='w-6/12 z-0' source={require('../assets/images/device-01.png')} />
-            <Image className='absolue bottom-72 rotate-180 h-36 w-36 z-10' source={require('../assets/images/swipe.gif')} />
+            <Image className='mb-20 z-0' source={require('../assets/images/device-01.png')} />
+            <Image className='absolue bottom-96 rotate-180 h-36 w-36 z-10' source={require('../assets/images/swipe.gif')} />
           </View>
           
           <View className='py-3 px-5 mx-5 mt-auto' style={{backgroundColor:'#00008B'}} >
