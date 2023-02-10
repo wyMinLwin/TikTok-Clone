@@ -20,6 +20,7 @@ const CameraTest = () => {
     const [cameraType,setCameraType] = useState(Camera.Constants.Type.back);
     const [cameraFlash,setCameraFlash] = useState(Camera.Constants.FlashMode.off);
     const [isCameraReady,setIsCameraReady] = useState(false);
+    const [galleryPreview,setGalleryPreview] = useState(null);
 
     useEffect(() => {
         (
@@ -43,25 +44,44 @@ const CameraTest = () => {
              }
             
         )();
-    },[])
+    },[]);
+
+    useEffect(() => {
+      // console.log('add',galleryItems)
+      if(galleryItems[0] !== undefined) {
+        setGalleryPreview(prev => prev = galleryItems[0].uri);
+      }
+    },[galleryItems])
+
     const recordVideo = async () => {
       if (cameraRef) {
         const options = { maxDuration: 120, quality: Camera.Constants.VideoQuality['720'] }
-        const videoRecordPromise = cameraRef.recordAsync(options);
+        const videoRecordPromise = cameraRef.current.recordAsync(options);
         try {
           if (videoRecordPromise) {
             const data = await videoRecordPromise;
-            const source = data.uri;
+            const source = await data.uri;
+            const saved = await MediaLibrary.saveToLibraryAsync(source);
+            console.log(saved)
+            if (saved === null) {
+              const userMediaLibrary = await MediaLibrary.getAssetsAsync({
+                sortBy: ['creationTime'],
+                mediaType: ['video']
+            });
+      
+            setGalleryItems(prev => prev = userMediaLibrary.assets);
+            }
+            
           }
         } catch (error) {
-          console.warn(error)
+          console.err(error)
         }
       }
     }
     const stopVideo = async () => {
       if (cameraRef) {
-        cameraRef.stopRecording()
-    }}
+        cameraRef.current.stopRecording();
+      }}
 
     if (!hasAudioPermissions || !hasCameraPermissions || !hasGalleryPermissions) {
       return (
@@ -89,7 +109,7 @@ const CameraTest = () => {
           ratio={'16:9'}
           type={cameraType}
           flashMode={cameraFlash}
-          onCameraReady={() => (prev) => prev = true}
+          onCameraReady={() => setIsCameraReady(prev => prev=true)}
         />   
         <View style={styles.toolsContainer}>
           <TouchableOpacity 
@@ -107,7 +127,7 @@ const CameraTest = () => {
             <TouchableOpacity 
             style={{alignItems:'center',justifyContent: 'center',marginVertical:5}}
                 onPress={() => {
-                  {console.log(cameraFlash)
+                  {
                     cameraFlash === 0
                     ? setCameraFlash(Camera.Constants.FlashMode.on)
                     : setCameraType(Camera.Constants.FlashMode.off)
@@ -130,8 +150,8 @@ const CameraTest = () => {
               style={styles.galleryButton}
               onPress={() => pickFromGallery()}
             >
-              { galleryItems[0] == undefined ? <></>
-              : <Image style={styles.galleryButtonImage} source={{uri: galleryItems[0].uri}} />
+              { galleryPreview == undefined ? <></>
+              : <Image style={styles.galleryButtonImage} source={{uri: galleryPreview}} />
               }
             </TouchableOpacity>
         </View>
