@@ -1,5 +1,5 @@
 import { View, Text, TouchableOpacity } from 'react-native'
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 
 const CategoryButton = (props) => {
     const [selected,setSelected] = useState(false);
@@ -12,7 +12,6 @@ const CategoryButton = (props) => {
         props.dispatchSelectedItem({type:'REMOVE_CATEGORY_ITEM',payload: props.title});
       }
     }
-    
 
   return (
     <TouchableOpacity 
@@ -29,7 +28,10 @@ const CategoryButton = (props) => {
       elevation: 3}]}
     >
       <Text  
-      className='font-normal text-lg whitespace-nowrap' style={{color:`${ selected ? '#fff' : '#000'}`}}>{props.title}</Text>  
+      className='font-normal text-lg whitespace-nowrap' style={{color:`${ selected ? '#fff' : '#000'}`}}
+      >
+        {props.title}
+      </Text>  
     </TouchableOpacity>
   )
 }

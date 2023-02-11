@@ -14,7 +14,6 @@ export const fetchComponentDidMount = createAsyncThunk(`fetchAtFirstRender`,
     }
 );
 
-
 const initialState = {
     postToRender: [],
     loadingState: 'idle'
@@ -23,18 +22,19 @@ const initialState = {
 const dataSlice = createSlice({
     name: 'data',
     initialState: initialState,
-    reducers: {
 
-    },
     extraReducers: (builder) => {
+
         builder.addCase(fetchComponentDidMount.pending,(state) => {
             state.loadingState = 'pending';
         });
+
         builder.addCase(fetchComponentDidMount.fulfilled,(state,action) => {
             state.loadingState = 'succeeded';
             state.postToRender = action.payload.products
             console.log(action.payload.products)
         });
+
         builder.addCase(fetchComponentDidMount.rejected,(state) => {
             state.loadingState = 'failed';
         })
