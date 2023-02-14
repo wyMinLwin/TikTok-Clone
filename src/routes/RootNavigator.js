@@ -1,7 +1,7 @@
 import { NavigationContainer } from '@react-navigation/native';
 import React from 'react'
 import { useSelector } from 'react-redux';
-import FeedStack from './FeedStack';
+import NavBar from '../components/NavBar';
 import StartUpStack from './StartUpStack'
 
 const RootNavigator = () => {
@@ -10,7 +10,7 @@ const RootNavigator = () => {
   return (
     <>
         <NavigationContainer>
-            {firstTime ? <StartUpStack /> : <FeedStack />} 
+            {firstTime ? <StartUpStack /> : <NavBar />} 
         </NavigationContainer>
     </>
   )
