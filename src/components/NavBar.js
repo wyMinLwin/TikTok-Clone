@@ -15,14 +15,16 @@ const NavBar = () => {
     const Tab = createBottomTabNavigator();
   return (
     <Tab.Navigator initialRouteName='Home'
-    screenOptions={{
-      tabBarStyle:{
-        backgroundColor:'#000',
-        paddingTop:10,
-        borderTopLeftRadius:'15',
-        borderTopRightRadius:'15',
-      },
-    }}
+      screenOptions={{
+        tabBarStyle:{
+          position:'absolute',
+          bottom:0,
+          borderTopWidth:0,
+          backgroundColor:'#000',
+          borderTopLeftRadius:'15',
+          borderTopRightRadius:'15',
+        },
+      }}
     >
         <Tab.Screen name='Home' component={HomeStack} 
           options={{
@@ -55,7 +57,7 @@ const NavBar = () => {
               return (         
                 <View
                 className='justify-center items-center h-16 w-full rounded-t-lg'
-                style={{backgroundColor:'#000',borderColor:'#fff',borderWidth:1,borderBottomWidth:0,}}
+                style={{backgroundColor:'#000',borderColor:'#fff',borderWidth:0.3,borderBottomWidth:0,}}
                 >
                   <FontAwesome name={'plus'} size={size+10} color={'#fff'} />
                 </View>
