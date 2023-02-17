@@ -1,21 +1,22 @@
-import { View, Dimensions, Pressable, Text } from 'react-native'
+import { View, Dimensions, Pressable } from 'react-native'
 import React from 'react'
 import { Video } from 'expo-av'
 import { useState } from 'react'
 import { useRef } from 'react'
 import Ionicon from 'react-native-vector-icons/Ionicons'
+import { useEffect } from 'react'
+import ToolsContainer from './ToolsContainer'
 
+const PostVideo = ({video_link}) => {
+  
+  const [status,setStatus] = useState({});
+  const videoRef = useRef();
+  const controlVideo = () => {
+    status.isPlaying ? videoRef.current.pauseAsync() : videoRef.current.playAsync();
+  }
 
-const PostVideo = () => {
-    const [status,setStatus] = useState({});
-    const videoRef = useRef();
-    const controlVideo = () => {
-      status.isPlaying ? videoRef.current.pauseAsync() : videoRef.current.playAsync();
-    }
   return (
-    <Pressable onPress={() => controlVideo()}>
-
-      
+    <Pressable onPress={() => controlVideo()}>      
       <View style={{width:'100%',height:Dimensions.get('window').height}}>
         {/* pause button */}
         {status.isPlaying ? <></> 
@@ -30,11 +31,12 @@ const PostVideo = () => {
           ref={videoRef}
           style={{position:'absolute',top:0,right:0,bottom:0,left:0,aspectRatio:16/9}}
           isLooping
-          source={require('../assets/videos/video02.mp4')}
+          source={video_link}
           resizeMode='stretch'
           shouldPlay={true}
           onPlaybackStatusUpdate={status => setStatus(() => status)}
         />
+        <ToolsContainer />
       </View>
     </Pressable>
   )
