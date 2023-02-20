@@ -64,18 +64,38 @@ const PostVideo = forwardRef((props,parentRef) => {
     setPaused(false);
   }
 
-  useImperativeHandle(parentRef, () => ({
-    play,
-    stop,
-    unload,
-    clearControl
-  }))
+  // function to pause the video when user swipe tab
+  const pause = async () => {
+    if (videoRef.current === null) {
+      return
+    }
+    const status = await videoRef.current.getStatusAsync();
+
+    if (!status?.isPlaying) return;
+
+    try {
+      await videoRef.current.pauseAsync();
+      setPaused(prev => prev = true);
+
+    } catch (err) {
+      console.log(err)
+    }
+  }
   
+  //funtion to control pause and resume on press 
   const controlVideo = () => {
     !paused ? videoRef.current.pauseAsync() : videoRef.current.playAsync();
     setPaused(prev => !prev);
   }
   
+  useImperativeHandle(parentRef, () => ({
+    play,
+    stop,
+    unload,
+    clearControl,
+    pause,
+  }))
+
   useEffect(() => {
     return () => unload();
   },[])

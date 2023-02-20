@@ -2,8 +2,9 @@ import { FlatList } from 'react-native'
 import React from 'react'
 import PostVideo from '../components/PostVideo'
 import { useSelector } from 'react-redux'
-import { useRef } from 'react'
+import { useRef, useEffect } from 'react'
 import { useIsFocused } from '@react-navigation/native'
+import { useCallback } from 'react'
 
 const PublicScreen = () => {
 
@@ -12,11 +13,11 @@ const PublicScreen = () => {
   const data = useSelector(state => state.devTestDB);
   const mediaRefs = useRef([]);
   
-  const onViewableItemsChanged = useRef(({changed}) => {
+  const onViewableItemsChanged = useCallback(({changed}) => {
     changed.forEach(element => {
       const cell = mediaRefs.current[element.index];
       if (cell) {
-        if (element.isViewable && isFocused) {
+        if (element.isViewable) {
           cell.play();
           cell.clearControl();
         } else {
@@ -24,7 +25,18 @@ const PublicScreen = () => {
         }
       }
     });
-  })
+  },[data]);
+  const onViewableItemsChangedRef = useRef(onViewableItemsChanged)
+
+  useEffect(() => {
+    if (!isFocused) {
+      mediaRefs.current.forEach((cell) => {
+        if (cell) {
+          cell.pause();
+        }
+      });
+    }
+  }, [isFocused]);
 
   return (
     <FlatList 
@@ -41,7 +53,7 @@ const PublicScreen = () => {
       keyExtractor={(item) => item.video_id}
       renderItem={({item,index}) => <PostVideo video_link={item.video_link} ref={postVideoRef => (mediaRefs.current[index] = postVideoRef)} />}
       pagingEnabled
-      onViewableItemsChanged={onViewableItemsChanged.current}
+      onViewableItemsChanged={onViewableItemsChangedRef.current}
     />
   )
 }

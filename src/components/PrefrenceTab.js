@@ -1,4 +1,3 @@
-import { View, Text } from 'react-native'
 import React from 'react'
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs'
 import FollowingScreen from '../screens/FollowingScreen';
@@ -13,6 +12,7 @@ const PrefrenceTab = () => {
     <>
       <Tab.Navigator initialRouteName='Public'
         screenOptions={{
+            lazy:true,
             tabBarLabelStyle: {
               fontSize:14,fontWeight:'700',color:'#fff',
               shadowColor: "#000000",shadowOffset: {width: 0.5,height: 0.5,},shadowOpacity:0.5,shadowRadius: 1.5,elevation: 2
