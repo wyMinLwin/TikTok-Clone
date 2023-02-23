@@ -1,4 +1,4 @@
-import { View, Text, TouchableOpacity } from 'react-native'
+import { View } from 'react-native'
 import React from 'react'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import HomeStack from '../routes/HomeStack';
@@ -10,13 +10,16 @@ import MaterialCommunityIcon from 'react-native-vector-icons/MaterialCommunityIc
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
 
 import CameraTest from '../../CameraTest'
+import { useSelector } from 'react-redux';
 
 const NavBar = () => {
     const Tab = createBottomTabNavigator();
+    const navbarShow = useSelector(state => state.commentsShow)
   return (
     <Tab.Navigator initialRouteName='Home'
       screenOptions={{
         tabBarStyle:{
+          display : `${navbarShow ? 'none' : 'flex'}`,
           position:'absolute',
           bottom:0,
           borderTopWidth:0,

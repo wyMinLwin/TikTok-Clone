@@ -3,15 +3,18 @@ import { createMaterialTopTabNavigator } from '@react-navigation/material-top-ta
 import FollowingScreen from '../screens/FollowingScreen';
 import PublicScreen from '../screens/PublicScreen';
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
+import { useSelector } from 'react-redux';
 
 const PrefrenceTab = () => {
     const insets = useSafeAreaInsets();
+    const commentsShow = useSelector(state => state.commentsShow)
 
     const Tab = createMaterialTopTabNavigator();
   return (
     <>
       <Tab.Navigator initialRouteName='Public'
         screenOptions={{
+            swipeEnabled:!commentsShow,
             lazy:true,
             tabBarLabelStyle: {
               fontSize:14,fontWeight:'700',color:'#fff',
