@@ -6,6 +6,7 @@ import { useState } from 'react'
 import commentsShowSlice from '../store/commentsShowSlice'
 import { useDispatch } from 'react-redux'
 import Feather from 'react-native-vector-icons/Feather'
+import { useCallback } from 'react'
 
 const ToolsContainer = (props) => {
     const dispatch = useDispatch();
@@ -13,6 +14,10 @@ const ToolsContainer = (props) => {
     const handleLike = () => {
         setLiked( prev => !prev);
     }
+    const controlCommentsVisibility = useCallback(() => {
+        dispatch(commentsShowSlice.actions.controlCommentsShow())
+    },[dispatch])
+
   return (
     <View className='absolute right-2 bottom-32 z-30'>
         
@@ -28,16 +33,16 @@ const ToolsContainer = (props) => {
         <TouchableOpacity onPress={() => handleLike()}>
             <View className='p-2 my-1 w-12 h-12 justify-center items-center rounded-full bg-white'>
                     <Ionicon
-                    style={{shadowColor: "#000000",shadowOffset: {width: 0,height: 1,},shadowOpacity:  0.46,shadowRadius: 1.51,elevation: 3}}
+                    style={{shadowColor: "#000000",shadowOffset: {width: 0,height: 1,},shadowOpacity:  0.46,shadowRadius: 1.51,elevation: 1}}
                     name='heart' size={28} color={`${!like ? '#fff' : '#ff7acd'}`}  />
             </View>
         </TouchableOpacity>
 
         {/* comment button */}
-        <TouchableOpacity onPress={() => {dispatch(commentsShowSlice.actions.controlCommentsShow())}}>
+        <TouchableOpacity onPress={() => {controlCommentsVisibility()}}>
             <View className='p-2 my-1 w-12 h-12 justify-center items-center rounded-full bg-white'>
                 <FontAwesome 
-                style={{shadowColor: "#000000",shadowOffset: {width: 0,height: 1,},shadowOpacity:  0.46,shadowRadius: 1.51,elevation: 3}}
+                style={{shadowColor: "#000000",shadowOffset: {width: 0,height: 1,},shadowOpacity:  0.46,shadowRadius: 1.51,elevation: 1}}
                 name='comment' size={22} color="#fff" />
             </View>
 
@@ -45,7 +50,7 @@ const ToolsContainer = (props) => {
         {/* Share button */}
         <View className='p-2 my-1 w-12 h-12 justify-center items-center rounded-full bg-white'>
             <Ionicon 
-            style={{shadowColor: "#000000",shadowOffset: {width: 0,height: 1,},shadowOpacity:  0.46,shadowRadius: 1.51,elevation: 3}}
+            style={{shadowColor: "#000000",shadowOffset: {width: 0,height: 1,},shadowOpacity:  0.46,shadowRadius: 1.51,elevation: 1}}
             name='share-social' size={24} color="#fff" />
         </View>
     </View>

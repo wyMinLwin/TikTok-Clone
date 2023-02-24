@@ -24,8 +24,8 @@ const NavBar = () => {
           bottom:0,
           borderTopWidth:0,
           backgroundColor:'#000',
-          borderTopLeftRadius:'15',
-          borderTopRightRadius:'15',
+          // borderTopLeftRadius:'15',
+          // borderTopRightRadius:'15',
         },
       }}
     >

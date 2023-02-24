@@ -1,4 +1,5 @@
 import { StatusBar } from 'react-native';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { Provider} from 'react-redux';
 import RootNavigator from './src/routes/RootNavigator';
 // import CameraTest from './CameraTest';
@@ -11,8 +12,10 @@ export default function App() {
   return (
     <>
       <Provider store={store}>
-        <StatusBar />
-        <RootNavigator />
+        <GestureHandlerRootView style={{flex:1}}>
+          <StatusBar />
+          <RootNavigator />
+        </GestureHandlerRootView>
       </Provider>
     </>
     
