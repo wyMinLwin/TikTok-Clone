@@ -13,7 +13,6 @@ const PostVideo = forwardRef((props,parentRef) => {
   
   const [paused,setPaused] = useState(false);
   const videoRef = useRef(null);
-  const doubleTapHandler = useRef(null);
   
   // function to play the video
   const play = async () => {
@@ -89,6 +88,7 @@ const PostVideo = forwardRef((props,parentRef) => {
     setPaused(prev => !prev);
   }
   
+  // to handle video from feed
   useImperativeHandle(parentRef, () => ({
     play,
     stop,
@@ -122,7 +122,7 @@ const PostVideo = forwardRef((props,parentRef) => {
             resizeMode='stretch'
             shouldPlay={false}
           />
-          <ToolsContainer />
+          <ToolsContainer user_profile={props.user_profile} />
         </View>
       </Pressable>
     </>

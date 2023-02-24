@@ -2,11 +2,14 @@ import { FlatList } from 'react-native'
 import React from 'react'
 import PostVideo from '../components/PostVideo'
 import Comments from './Comments'
+import { useSelector } from 'react-redux'
 
 
 const Feed = (props) => {
+  const commentsShow = useSelector(state => state.commentsShow );
   return (
     <>
+    {/* Video feed for user to watch */}
       <FlatList 
         showsVerticalScrollIndicator={false}
         windowSize={4}
@@ -19,11 +22,11 @@ const Feed = (props) => {
         decelerationRate={'normal'}
         data={props.data}
         keyExtractor={(item) => item.video_id}
-        renderItem={({item,index}) => <PostVideo video_link={item.video_link} ref={postVideoRef => (props.mediaRefs.current[index] = postVideoRef)} />}
+        renderItem={({item,index}) => <PostVideo user_profile={item.user_profile} video_link={item.video_link} ref={postVideoRef => (props.mediaRefs.current[index] = postVideoRef)} />}
         pagingEnabled
         onViewableItemsChanged={props.onViewableItemsChangedRef.current}
       />
-      <Comments />
+      {commentsShow &&  <Comments commentsShow={commentsShow} />}
     </>
   )
 }

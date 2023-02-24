@@ -2,7 +2,7 @@ const data = [
         {
             "user_id":1,
             "user_name":"benjamin",
-            "user_profile":"https://scontent-sin6-1.xx.fbcdn.net/v/t39.30808-6/330160420_851124662651641_4970711506023120536_n.jpg?stp=cp6_dst-jpg&_nc_cat=107&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=7QIvg3TwANIAX-0xYlo&_nc_ht=scontent-sin6-1.xx&oh=00_AfBuvQkbaEH6bs9n6ES480sQjGvwxtDgx72sBznHe9gZsA&oe=63F27F51",
+            "user_profile":"https://flxt.tmsimg.com/assets/487714_v9_bb.jpg",
             "video_title":"Every developer can relate",
             "video_link":require('./src/assets/videos/video02.mp4'),
             "video_id":1,
@@ -35,7 +35,7 @@ const data = [
         {
             "user_id":4,
             "user_name":"harry_styles",    
-            "user_profile":"https://scontent-sin6-1.xx.fbcdn.net/v/t39.30808-6/330160420_851124662651641_4970711506023120536_n.jpg?stp=cp6_dst-jpg&_nc_cat=107&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=7QIvg3TwANIAX-0xYlo&_nc_ht=scontent-sin6-1.xx&oh=00_AfBuvQkbaEH6bs9n6ES480sQjGvwxtDgx72sBznHe9gZsA&oe=63F27F51",
+            "user_profile":"https://flxt.tmsimg.com/assets/487714_v9_bb.jpg",
             "video_title":"Lonely nights",
             "video_link":require("./src/assets/videos/video01.mp4"),
             "video_id":4,
