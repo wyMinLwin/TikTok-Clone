@@ -1,15 +1,21 @@
 import { View, Dimensions, Pressable } from 'react-native'
-import React from 'react'
+import React,{ useState, useRef, useEffect, forwardRef, useImperativeHandle } from 'react'
 import { Video } from 'expo-av'
-import { useState } from 'react'
-import { useRef } from 'react'
 import Ionicon from 'react-native-vector-icons/Ionicons'
-import { useEffect } from 'react'
 import ToolsContainer from './ToolsContainer'
-import { forwardRef } from 'react'
-import { useImperativeHandle } from 'react'
+import Comments from './Comments'
+import navbarShowSlice from '../store/navbarShow'
+import { useDispatch, useSelector } from 'react-redux'
+
 
 const PostVideo = forwardRef((props,parentRef) => {
+  const navbarStatus = useSelector(state => state.navbarShow);
+  const dispatch = useDispatch();
+  const [commentsBoxVisibility,setCommentsBoxVisibility] = useState(navbarStatus);
+  const controlCommentsBoxVisibility = () => {
+    setCommentsBoxVisibility(prev => !prev);
+    dispatch(navbarShowSlice.actions.controlNavbarShow());
+  }
   
   const [paused,setPaused] = useState(false);
   const videoRef = useRef(null);
@@ -122,7 +128,10 @@ const PostVideo = forwardRef((props,parentRef) => {
             resizeMode='stretch'
             shouldPlay={false}
           />
-          <ToolsContainer user_profile={props.user_profile} />
+
+          {commentsBoxVisibility &&  <Comments controlCommentsBoxVisibility={controlCommentsBoxVisibility} commentsBoxVisibility={commentsBoxVisibility} />}
+          <ToolsContainer controlCommentsBoxVisibility={controlCommentsBoxVisibility} user_profile={props.user_profile} />
+
         </View>
       </Pressable>
     </>

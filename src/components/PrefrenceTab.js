@@ -21,7 +21,7 @@ const PrefrenceTab = () => {
               shadowColor: "#000000",shadowOffset: {width: 0.5,height: 0.5,},shadowOpacity:0.5,shadowRadius: 1.5,elevation: 2
             },
             tabBarStyle:{
-                width:'60%',
+                width:'70%',
                 alignSelf:'center',
                 position:'absolute',
                 top:insets.top,

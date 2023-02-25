@@ -3,7 +3,7 @@ import dataSlice from "./dataSlice";
 import categoriesSlice from "./categoriesSlice";
 import firstTimeSlice from "./firstTimeSlice";
 import devTestDBSlice from "./devTestDBSlice";
-import commentsShowSlice from "./commentsShowSlice"
+import navbarShowSlice from "./navbarShow"
 
 const store = configureStore({
     reducer: {
@@ -11,7 +11,7 @@ const store = configureStore({
         categories: categoriesSlice.reducer,
         firstTime: firstTimeSlice.reducer,
         devTestDB: devTestDBSlice.reducer,
-        commentsShow: commentsShowSlice.reducer,
+        navbarShow: navbarShowSlice.reducer,
     }
 })
 

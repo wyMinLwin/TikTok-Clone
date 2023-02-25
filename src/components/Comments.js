@@ -1,6 +1,6 @@
 import { View, Text, Pressable, TextInput } from 'react-native'
 import React, { useEffect, useCallback, useMemo } from 'react'
-import commentsShowSlice from '../store/commentsShowSlice'
+import commentsShowSlice from '../store/navbarShow'
 import { useDispatch } from 'react-redux'
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
 import Entypo from 'react-native-vector-icons/Entypo'
@@ -8,27 +8,22 @@ import { useRef } from 'react'
 import BottomSheet, { BottomSheetTextInput } from '@gorhom/bottom-sheet';
 
 
-const Comments = () => {
+const Comments = (props) => {
     const commentsBoxRef = useRef(null);
     const snapPoints = useMemo(() => ['50%', '70%'], []);
 
-    const dispatch = useDispatch();
-    
-    // This function to control comments box visibility
-    const controlCommentsVisibility = useCallback(() => {    
-        dispatch(commentsShowSlice.actions.controlCommentsShow());
-    },[])
-
     const handleSheetChanges = useCallback((index) => {
         if (index === -1) {
-            controlCommentsVisibility();
+            // controlCommentsVisibility();
+            props.controlCommentsBoxVisibility();
         }
       }, []);
     
   return (
     
     <>
-        <View className='w-screen h-screen absolute top-0 right-0 bottom-0 left-0 flex-1'>
+        <View className='w-screen h-screen absolute top-0 right-0 bottom-0 left-0 flex-1 z-40'>
+            <Pressable className='w-screen h-screen' onPress={() => props.controlCommentsBoxVisibility()}></Pressable>
             <BottomSheet
                 enablePanDownToClose={true}
                 ref={commentsBoxRef}

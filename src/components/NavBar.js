@@ -14,7 +14,7 @@ import { useSelector } from 'react-redux';
 
 const NavBar = () => {
     const Tab = createBottomTabNavigator();
-    const navbarShow = useSelector(state => state.commentsShow)
+    const navbarShow = useSelector(state => state.navbarShow)
   return (
     <Tab.Navigator initialRouteName='Home'
       screenOptions={{

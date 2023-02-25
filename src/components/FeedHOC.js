@@ -1,9 +1,6 @@
-import React from 'react'
+import React, { useRef, useEffect, useCallback } from 'react'
 import { useIsFocused, useRoute } from '@react-navigation/native';
 import { useSelector } from 'react-redux'
-import { useRef, useEffect } from 'react'
-import { useCallback } from 'react'
-
 
 const FeedHOC = (PrefrenceScreen) => {
   const VideoFeed = () => {

@@ -1,22 +1,14 @@
 import { View, Image, TouchableOpacity } from 'react-native'
-import React from 'react'
+import React, { useState } from 'react'
 import Ionicon from 'react-native-vector-icons/Ionicons'
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
-import { useState } from 'react'
-import commentsShowSlice from '../store/commentsShowSlice'
-import { useDispatch } from 'react-redux'
 import Feather from 'react-native-vector-icons/Feather'
-import { useCallback } from 'react'
 
 const ToolsContainer = (props) => {
-    const dispatch = useDispatch();
     const [like,setLiked] = useState(false);
     const handleLike = () => {
         setLiked( prev => !prev);
     }
-    const controlCommentsVisibility = useCallback(() => {
-        dispatch(commentsShowSlice.actions.controlCommentsShow())
-    },[dispatch])
 
   return (
     <View className='absolute right-2 bottom-32 z-30'>
@@ -39,7 +31,7 @@ const ToolsContainer = (props) => {
         </TouchableOpacity>
 
         {/* comment button */}
-        <TouchableOpacity onPress={() => {controlCommentsVisibility()}}>
+        <TouchableOpacity onPress={() => {props.controlCommentsBoxVisibility()}}>
             <View className='p-2 my-1 w-12 h-12 justify-center items-center rounded-full bg-white'>
                 <FontAwesome 
                 style={{shadowColor: "#000000",shadowOffset: {width: 0,height: 1,},shadowOpacity:  0.46,shadowRadius: 1.51,elevation: 1}}

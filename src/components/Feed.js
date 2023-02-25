@@ -1,16 +1,16 @@
 import { FlatList } from 'react-native'
-import React from 'react'
+import React, {useMemo} from 'react'
 import PostVideo from '../components/PostVideo'
-import Comments from './Comments'
 import { useSelector } from 'react-redux'
 
-
 const Feed = (props) => {
-  const commentsShow = useSelector(state => state.commentsShow );
+  const navbarStatus = useSelector(state => state.navbarShow);
+  
   return (
     <>
     {/* Video feed for user to watch */}
       <FlatList 
+        scrollEnabled={!navbarStatus}
         showsVerticalScrollIndicator={false}
         windowSize={4}
         initialNumToRender={0}
@@ -26,7 +26,7 @@ const Feed = (props) => {
         pagingEnabled
         onViewableItemsChanged={props.onViewableItemsChangedRef.current}
       />
-      {commentsShow &&  <Comments commentsShow={commentsShow} />}
+      
     </>
   )
 }
