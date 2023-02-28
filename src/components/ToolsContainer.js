@@ -4,6 +4,10 @@ import Ionicon from 'react-native-vector-icons/Ionicons'
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
 import Feather from 'react-native-vector-icons/Feather'
 
+// shadowOffset: {width: 0,height: 1,},shadowOpacity:  0.46,shadowRadius: 1.51,elevation: 1
+// shadowOffset: {width: 0,height: 1,},shadowOpacity:  0.46,shadowRadius: 1.51,elevation: 1
+// shadowOffset: {width: 0,height: 1,},shadowOpacity:  0.46,shadowRadius: 1.51,elevation: 1
+
 const ToolsContainer = (props) => {
     const [like,setLiked] = useState(false);
     const handleLike = () => {
@@ -23,27 +27,33 @@ const ToolsContainer = (props) => {
 
         {/* like button */}
         <TouchableOpacity onPress={() => handleLike()}>
-            <View className='p-2 my-1 w-12 h-12 justify-center items-center rounded-full bg-white'>
+            <View className='p-2 my-1 w-12 h-12 justify-center items-center rounded-full'
+            style={{backgroundColor:'transparent',shadowOffset: {width: 0,height: 1,},shadowOpacity:  0.46,shadowRadius: 1.51,elevation: 1}}
+            >
                     <Ionicon
-                    style={{shadowColor: "#000000",shadowOffset: {width: 0,height: 1,},shadowOpacity:  0.46,shadowRadius: 1.51,elevation: 1}}
-                    name='heart' size={28} color={`${!like ? '#fff' : '#ff7acd'}`}  />
+                    style={{shadowColor: "#000000",}}
+                    name='heart' size={34} color={`${!like ? '#ffffffd0' : '#ff7acd'}`}  />
             </View>
         </TouchableOpacity>
 
         {/* comment button */}
         <TouchableOpacity onPress={() => {props.controlCommentsBoxVisibility()}}>
-            <View className='p-2 my-1 w-12 h-12 justify-center items-center rounded-full bg-white'>
+            <View className='p-2 my-1 w-12 h-12 justify-center items-center rounded-full'
+            style={{backgroundColor:'transparent',shadowOffset: {width: 0,height: 1,},shadowOpacity:  0.46,shadowRadius: 1.51,elevation: 1}}
+            >
                 <FontAwesome 
-                style={{shadowColor: "#000000",shadowOffset: {width: 0,height: 1,},shadowOpacity:  0.46,shadowRadius: 1.51,elevation: 1}}
-                name='comment' size={22} color="#fff" />
+                style={{shadowColor: "#000000",}}
+                name='comment' size={28} color="#ffffffd0" />
             </View>
 
         </TouchableOpacity>
         {/* Share button */}
-        <View className='p-2 my-1 w-12 h-12 justify-center items-center rounded-full bg-white'>
+        <View className='p-2 my-1 w-12 h-12 justify-center items-center rounded-full'
+        style={{backgroundColor:'transparent',shadowOffset: {width: 0,height: 1,},shadowOpacity:  0.46,shadowRadius: 1.51,elevation: 1}}
+        >
             <Ionicon 
-            style={{shadowColor: "#000000",shadowOffset: {width: 0,height: 1,},shadowOpacity:  0.46,shadowRadius: 1.51,elevation: 1}}
-            name='share-social' size={24} color="#fff" />
+            style={{shadowColor: "#000000",}}
+            name='arrow-redo-sharp' size={34} color="#ffffffd0" />
         </View>
     </View>
   )

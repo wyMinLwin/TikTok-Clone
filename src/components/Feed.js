@@ -1,5 +1,5 @@
 import { FlatList } from 'react-native'
-import React, {useMemo} from 'react'
+import React from 'react'
 import PostVideo from '../components/PostVideo'
 import { useSelector } from 'react-redux'
 

@@ -7,14 +7,15 @@ import { useSelector } from 'react-redux';
 
 const PrefrenceTab = () => {
     const insets = useSafeAreaInsets();
-    const commentsShow = useSelector(state => state.commentsShow)
+    const navbarShow = useSelector(state => state.navbarShow)
+    console.log(navbarShow)
 
     const Tab = createMaterialTopTabNavigator();
   return (
     <>
       <Tab.Navigator initialRouteName='Public'
         screenOptions={{
-            swipeEnabled:!commentsShow,
+            swipeEnabled:!navbarShow,
             lazy:true,
             tabBarLabelStyle: {
               fontSize:14,fontWeight:'700',color:'#fff',

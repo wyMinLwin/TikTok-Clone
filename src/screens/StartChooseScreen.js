@@ -1,5 +1,5 @@
 import { View, Text, SafeAreaView, TouchableOpacity, Modal } from 'react-native'
-import React, { useEffect, useReducer, useState } from 'react'
+import React, { useReducer, useState } from 'react'
 import CategoryButton from '../components/CategoryButton'
 import { useSelector } from 'react-redux';
 import { useNavigation } from '@react-navigation/native';

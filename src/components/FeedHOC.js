@@ -10,7 +10,8 @@ const FeedHOC = (PrefrenceScreen) => {
 
     const data = useSelector(state => state.devTestDB);
     const mediaRefs = useRef([]);
-    
+
+    // This is to play the video when user scroll out of a video it pause and play new one 
     const onViewableItemsChanged = useCallback(({changed}) => {
         changed.forEach(element => {
         const cell = mediaRefs.current[element.index];
@@ -26,6 +27,7 @@ const FeedHOC = (PrefrenceScreen) => {
     },[data]);
     const onViewableItemsChangedRef = useRef(onViewableItemsChanged)
 
+    // This side effect work everytime user swipe taba and I would stop the current video
     useEffect(() => {
         if (!isFocused) {
         mediaRefs.current.forEach((cell) => {
