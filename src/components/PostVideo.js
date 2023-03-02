@@ -6,6 +6,7 @@ import ToolsContainer from './ToolsContainer'
 import Comments from './Comments'
 import navbarShowSlice from '../store/navbarShow'
 import { useDispatch, useSelector } from 'react-redux'
+import BottomContentContainer from './BottomContentContainer'
 
 
 const PostVideo = forwardRef((props,parentRef) => {
@@ -124,14 +125,14 @@ const PostVideo = forwardRef((props,parentRef) => {
             ref={videoRef}
             style={{position:'absolute',top:0,right:0,bottom:0,left:0,aspectRatio:16/9}}
             isLooping
-            source={props.video_link}
+            source={props.item.video_link}
             resizeMode='stretch'
             shouldPlay={false}
           />
 
           {commentsBoxVisibility &&  <Comments controlCommentsBoxVisibility={controlCommentsBoxVisibility} commentsBoxVisibility={commentsBoxVisibility} />}
-          <ToolsContainer controlCommentsBoxVisibility={controlCommentsBoxVisibility} user_profile={props.user_profile} />
-
+          <ToolsContainer controlCommentsBoxVisibility={controlCommentsBoxVisibility} user_profile={props.item.user_profile} />
+          <BottomContentContainer video_title={props.item.video_title} user_name={props.item.user_name} user_profile={props.item.user_profile} />
         </View>
       </Pressable>
     </>

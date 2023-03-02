@@ -8,8 +8,7 @@ import { useSelector } from 'react-redux';
 const PrefrenceTab = () => {
     const insets = useSafeAreaInsets();
     const navbarShow = useSelector(state => state.navbarShow)
-    console.log(navbarShow)
-
+    
     const Tab = createMaterialTopTabNavigator();
   return (
     <>

@@ -23,9 +23,7 @@ const NavBar = () => {
           position:'absolute',
           bottom:0,
           borderTopWidth:0,
-          backgroundColor:'#000',
-          // borderTopLeftRadius:'15',
-          // borderTopRightRadius:'15',
+          backgroundColor:'#000',      
         },
       }}
     >
@@ -59,10 +57,10 @@ const NavBar = () => {
             tabBarIcon: ({size}) => {           
               return (         
                 <View
-                className='justify-center items-center h-16 w-full rounded-t-lg'
-                style={{backgroundColor:'#000',borderColor:'#fff',borderWidth:0.3,borderBottomWidth:0,}}
+                className='justify-center items-center align-center w-8/12 h-full rounded-lg mt-5'
+                style={{backgroundColor:'#555555'}}
                 >
-                  <FontAwesome name={'plus'} size={size+10} color={'#fff'} />
+                  <FontAwesome name={'plus'} size={size} color={'#fff'} />
                 </View>
               )
             }

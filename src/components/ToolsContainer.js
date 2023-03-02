@@ -15,7 +15,7 @@ const ToolsContainer = (props) => {
     }
 
   return (
-    <View className='absolute right-2 bottom-32 z-30'>
+    <View className='absolute right-2 z-30 bottom-44'>
         
         {/* Profile  */}
         <View className='my-2 w-12 justify-center items-center relative' >

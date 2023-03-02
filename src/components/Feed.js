@@ -15,14 +15,13 @@ const Feed = (props) => {
         windowSize={4}
         initialNumToRender={0}
         maxToRenderPerBatch={2}
-        removeClippedSubviews
         viewabilityConfig={{
           itemVisiblePercentThreshold: 70
         }}
         decelerationRate={'normal'}
         data={props.data}
         keyExtractor={(item) => item.video_id}
-        renderItem={({item,index}) => <PostVideo user_profile={item.user_profile} video_link={item.video_link} ref={postVideoRef => (props.mediaRefs.current[index] = postVideoRef)} />}
+        renderItem={({item,index}) => <PostVideo item={item} ref={postVideoRef => (props.mediaRefs.current[index] = postVideoRef)} />}
         pagingEnabled
         onViewableItemsChanged={props.onViewableItemsChangedRef.current}
       />
