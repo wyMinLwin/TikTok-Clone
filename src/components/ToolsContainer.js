@@ -28,7 +28,7 @@ const ToolsContainer = (props) => {
         {/* like button */}
         <TouchableOpacity onPress={() => handleLike()}>
             <View className='p-2 my-1 w-12 h-12 justify-center items-center rounded-full'
-            style={{backgroundColor:'transparent',shadowOffset: {width: 0,height: 1,},shadowOpacity:  0.46,shadowRadius: 1.51,elevation: 1}}
+            style={{backgroundColor:'transparent',shadowOffset: {width: 0,height: 1,},shadowOpacity:  0.46,shadowRadius: 1.51,}}
             >
                     <Ionicon
                     style={{shadowColor: "#000000",}}
@@ -39,7 +39,7 @@ const ToolsContainer = (props) => {
         {/* comment button */}
         <TouchableOpacity onPress={() => {props.controlCommentsBoxVisibility()}}>
             <View className='p-2 my-1 w-12 h-12 justify-center items-center rounded-full'
-            style={{backgroundColor:'transparent',shadowOffset: {width: 0,height: 1,},shadowOpacity:  0.46,shadowRadius: 1.51,elevation: 1}}
+            style={{backgroundColor:'transparent',shadowOffset: {width: 0,height: 1,},shadowOpacity:  0.46,shadowRadius: 1.51,}}
             >
                 <FontAwesome 
                 style={{shadowColor: "#000000",}}
@@ -49,7 +49,7 @@ const ToolsContainer = (props) => {
         </TouchableOpacity>
         {/* Share button */}
         <View className='p-2 my-1 w-12 h-12 justify-center items-center rounded-full'
-        style={{backgroundColor:'transparent',shadowOffset: {width: 0,height: 1,},shadowOpacity:  0.46,shadowRadius: 1.51,elevation: 1}}
+        style={{backgroundColor:'transparent',shadowOffset: {width: 0,height: 1,},shadowOpacity:  0.46,shadowRadius: 1.51,}}
         >
             <Ionicon 
             style={{shadowColor: "#000000",}}

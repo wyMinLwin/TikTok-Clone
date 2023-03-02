@@ -30,7 +30,7 @@ const BottomContentContainer = (props) => {
                     setNumberOfLines(2)
                 }
               }}
-         numberOfLines= {showFullText ? null : numberOfLines} ellipsizeMode='tail' className='w-10/12 text-base text-white font-semibold'
+         numberOfLines= {showFullText ? null : numberOfLines} ellipsizeMode='tail' className='w-9/12 text-base text-white font-semibold'
         >
        {props.video_title}
         </Text>
