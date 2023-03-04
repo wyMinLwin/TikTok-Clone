@@ -9,7 +9,17 @@ const ChatBox = (props) => {
         setMessages([
             {
                 _id: 1,
-                text: 'Hi',
+                text: `Layin' down in my bed at 4AM, we get up`,
+                createdAt: new Date(),
+                user: {
+                  _id: 'ceo_waiyan',
+                  name: props.data.user_name,
+                  avatar: props.data.user_profile,
+                },
+              },
+              {
+                _id: 2,
+                text: `Girl, let's get up, lost forever`,
                 createdAt: new Date(),
                 user: {
                   _id: props.data.user,
@@ -18,11 +28,31 @@ const ChatBox = (props) => {
                 },
               },
               {
-                _id: 2,
-                text: 'Do you remember? we met in London',
+                _id: 3,
+                text: `Let's take a drive, feel alive, let's just be together`,
+                createdAt: new Date(),
+                user: {
+                  _id: 'ceo_waiyan',
+                  name: props.data.user_name,
+                  avatar: props.data.user_profile,
+                },
+              },
+              {
+                _id: 4,
+                text: `Us together, nothing's better`,
                 createdAt: new Date(),
                 user: {
                   _id: props.data.user,
+                  name: props.data.user_name,
+                  avatar: props.data.user_profile,
+                },
+              },
+              {
+                _id: 5,
+                text: `You got those eyes like the sky, pretty butterfly. I got the sunset on my mind, your body so divine`,
+                createdAt: new Date(),
+                user: {
+                  _id: 'ceo_waiyan',
                   name: props.data.user_name,
                   avatar: props.data.user_profile,
                 },
@@ -40,7 +70,7 @@ const ChatBox = (props) => {
             messages={messages}
             onSend={messages => onSend(messages)}
             user={{
-              _id: 1,
+              _id: 'ceo_waiyan',
             }}
         />
     </View>
