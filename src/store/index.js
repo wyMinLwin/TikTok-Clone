@@ -7,6 +7,7 @@ import activePeopleSlice from "./activePeopleSlice";
 import navbarShowSlice from "./navbarShow"
 import messagesSlice from "./messagesSlice";
 import activitiesSlice from "./activitiesSlice"
+import profileVideoSlice from "./profileVideoSlice";
 
 const store = configureStore({
     reducer: {
@@ -18,6 +19,7 @@ const store = configureStore({
         activePeople: activePeopleSlice.reducer,
         messages: messagesSlice.reducer,
         activities: activitiesSlice.reducer,
+        profileVideo: profileVideoSlice.reducer,
     }
 })
 

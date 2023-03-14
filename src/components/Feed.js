@@ -1,5 +1,5 @@
 import { FlatList } from 'react-native'
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
 import PostVideo from '../components/PostVideo'
 import { useSelector } from 'react-redux'
 
@@ -21,7 +21,7 @@ const Feed = (props) => {
         decelerationRate={'normal'}
         data={props.data}
         keyExtractor={(item) => item.video_id}
-        renderItem={({item,index}) => <PostVideo item={item} ref={postVideoRef => (props.mediaRefs.current[index] = postVideoRef)} />}
+        renderItem={({item,index}) => <PostVideo backButton={props.backButton} item={item} ref={postVideoRef => (props.mediaRefs.current[index] = postVideoRef)} />}
         pagingEnabled
         onViewableItemsChanged={props.onViewableItemsChangedRef.current}
       />

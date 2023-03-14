@@ -1,4 +1,4 @@
-import { View, Dimensions, Pressable } from 'react-native'
+import { View, Dimensions, Pressable, Text } from 'react-native'
 import React,{ useState, useRef, useEffect, forwardRef, useImperativeHandle } from 'react'
 import { Video } from 'expo-av'
 import Ionicon from 'react-native-vector-icons/Ionicons'
@@ -7,10 +7,12 @@ import Comments from './Comments'
 import navbarShowSlice from '../store/navbarShow'
 import { useDispatch, useSelector } from 'react-redux'
 import BottomContentContainer from './BottomContentContainer'
+import { useNavigation } from '@react-navigation/native'
 
 
 const PostVideo = forwardRef((props,parentRef) => {
   const navbarStatus = useSelector(state => state.navbarShow);
+  const naviagtion = useNavigation();
   const dispatch = useDispatch();
   const [commentsBoxVisibility,setCommentsBoxVisibility] = useState(navbarStatus);
   const controlCommentsBoxVisibility = () => {
@@ -111,7 +113,17 @@ const PostVideo = forwardRef((props,parentRef) => {
   return (
     <>
       <Pressable  onPress={() => controlVideo()} >      
-        <View style={{width:'100%',height:Dimensions.get('window').height}}>
+        <View className='bg-black' style={{width:'100%',height:Dimensions.get('window').height}}>
+
+          {
+            props.backButton ? 
+            <Pressable className='absolute top-12 left-0 p-1 z-30'
+            onPress={() => naviagtion.goBack()}
+            >
+              <Ionicon name='chevron-back' size={30} color="#fff"/>
+            </Pressable>
+            : <></>
+          }
           {/* pause button */}
           {!paused ? <></> 
           : <View 
@@ -126,7 +138,7 @@ const PostVideo = forwardRef((props,parentRef) => {
             style={{position:'absolute',top:0,right:0,bottom:0,left:0,aspectRatio:16/9}}
             isLooping
             source={props.item.video_link}
-            resizeMode='stretch'
+            resizeMode={props.item.size}
             shouldPlay={false}
           />
 
