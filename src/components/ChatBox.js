@@ -12,7 +12,7 @@ const ChatBox = (props) => {
                 text: `Layin' down in my bed at 4AM, we get up`,
                 createdAt: new Date(),
                 user: {
-                  _id: 'ceo_waiyan',
+                  _id: 'PRIME_WAIYAN',
                   name: props.data.user_name,
                   avatar: props.data.user_profile,
                 },
@@ -32,7 +32,7 @@ const ChatBox = (props) => {
                 text: `Let's take a drive, feel alive, let's just be together`,
                 createdAt: new Date(),
                 user: {
-                  _id: 'ceo_waiyan',
+                  _id: 'PRIME_WAIYAN',
                   name: props.data.user_name,
                   avatar: props.data.user_profile,
                 },
@@ -52,7 +52,7 @@ const ChatBox = (props) => {
                 text: `You got those eyes like the sky, pretty butterfly. I got the sunset on my mind, your body so divine`,
                 createdAt: new Date(),
                 user: {
-                  _id: 'ceo_waiyan',
+                  _id: 'PRIME_WAIYAN',
                   name: props.data.user_name,
                   avatar: props.data.user_profile,
                 },
@@ -70,7 +70,7 @@ const ChatBox = (props) => {
             messages={messages}
             onSend={messages => onSend(messages)}
             user={{
-              _id: 'ceo_waiyan',
+              _id: 'PRIME_WAIYAN',
             }}
         />
     </View>

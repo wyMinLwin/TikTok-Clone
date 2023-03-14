@@ -8,6 +8,9 @@ const navbarShowSlice = createSlice({
             return !state
         },
         hideNavbarShow (state) {
+            return state = true;
+        },
+        showNavbarShow (state) {
             return state = false;
         }
     }

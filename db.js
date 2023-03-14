@@ -8,7 +8,8 @@ const data = [
             "video_id":1,
             "like":999,
             "comment":[],
-            "share":678
+            "share":678,
+            "size":'stretch'
         },
         {
             "user_id":2,
@@ -19,7 +20,8 @@ const data = [
             "video_id":2,
             "like":309,
             "comment":[],
-            "share":122
+            "share":122,
+            "size":'stretch'
         },
         {
             "user_id":3,
@@ -30,7 +32,8 @@ const data = [
             "video_id":3,
             "like":999,
             "comment":[],
-            "share":678
+            "share":678,
+            "size":'stretch'
         },      
         {
             "user_id":4,
@@ -41,7 +44,8 @@ const data = [
             "video_id":4,
             "like":899,
             "comment":[],
-            "share":678
+            "share":678,
+            "size":'contain'
         },     
         {
             "user_id":1,
@@ -52,7 +56,8 @@ const data = [
             "video_id":5,
             "like":1999,
             "comment":[],
-            "share":999
+            "share":999,
+            "size":'stretch'
         },        
         {
             "user_id":4,
@@ -63,7 +68,8 @@ const data = [
             "video_id":6,
             "like":999,
             "comment":[],
-            "share":678
+            "share":678,
+            "size":'stretch'
         },  
     ]
 export default data;

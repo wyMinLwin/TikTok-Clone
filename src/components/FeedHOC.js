@@ -1,14 +1,20 @@
-import React, { useRef, useEffect, useCallback } from 'react'
+import React, { useRef, useEffect, useCallback, useState } from 'react'
 import { useIsFocused, useRoute } from '@react-navigation/native';
 import { useSelector } from 'react-redux'
 
-const FeedHOC = (PrefrenceScreen) => {
+const FeedHOC = (PrefrenceScreen,value) => {
   const VideoFeed = () => {
-    const isFocused = useIsFocused();
-    const route = useRoute();
-   
 
-    const data = useSelector(state => state.devTestDB);
+    const [backButton,setBackButton] = useState(false)
+    
+    useEffect(() => {
+      if (value === "PROFILE") {
+        setBackButton(prev => prev = true)
+      }
+    },[value])
+    
+    const isFocused = useIsFocused();
+    const data = useSelector(state => state.profileVideo);
     const mediaRefs = useRef([]);
 
     // This is to play the video when user scroll out of a video it pause and play new one 
@@ -27,7 +33,7 @@ const FeedHOC = (PrefrenceScreen) => {
     },[data]);
     const onViewableItemsChangedRef = useRef(onViewableItemsChanged)
 
-    // This side effect work everytime user swipe taba and I would stop the current video
+    // This side effect work everytime user swipe tab and I would stop the current video
     useEffect(() => {
         if (!isFocused) {
         mediaRefs.current.forEach((cell) => {
@@ -38,7 +44,7 @@ const FeedHOC = (PrefrenceScreen) => {
         }
     }, [isFocused]);
 
-    return <PrefrenceScreen mediaRefs={mediaRefs} onViewableItemsChangedRef={onViewableItemsChangedRef} data={route.name === 'Public' ? data : [...data].reverse()} />
+    return <PrefrenceScreen mediaRefs={mediaRefs} onViewableItemsChangedRef={onViewableItemsChangedRef} backButton={backButton} />
   }
   return VideoFeed
 }
