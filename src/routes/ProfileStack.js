@@ -15,8 +15,7 @@ const ProfileStack = () => {
   return (
     <Stack.Navigator initialRouteName='ProfileStack'
     screenOptions={{
-      headerTitle: 'Profile',
-      headerShown:true,  
+      headerShown:false,  
     }}
     >
         <Stack.Screen name='ProfileStack' component={ProfileScreen}
@@ -25,9 +24,11 @@ const ProfileStack = () => {
             <Pressable onPress={() => navigation.goBack()}>
               <Ionicon name='ios-chevron-back' size={26}></Ionicon>
             </Pressable>),
+          headerShown:true,
+          headerTitle:'Me',
           headerRight: () => (
             <Pressable onPress={() => navigation.navigate('ProfileSettingStack')}>
-              <Entypo name='dots-three-vertical' size={20}></Entypo>
+              <Entypo name='menu' size={24}></Entypo>
             </Pressable>)
         }}
         />
