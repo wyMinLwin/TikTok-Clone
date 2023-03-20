@@ -8,6 +8,7 @@ import navbarShowSlice from "./navbarShow"
 import messagesSlice from "./messagesSlice";
 import activitiesSlice from "./activitiesSlice"
 import profileVideoSlice from "./profileVideoSlice";
+import loginOptionSlice from "./loginOptionStack";
 
 const store = configureStore({
     reducer: {
@@ -20,7 +21,8 @@ const store = configureStore({
         messages: messagesSlice.reducer,
         activities: activitiesSlice.reducer,
         profileVideo: profileVideoSlice.reducer,
-    }
+        loginOption: loginOptionSlice.reducer,
+    },
 })
 
 export default store;

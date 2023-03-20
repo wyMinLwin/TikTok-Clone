@@ -8,7 +8,7 @@ const StartScreen = () => {
     const navigation = useNavigation();
     useEffect(() => {
         const timer = setTimeout(() => {
-            navigation.navigate('Choose Categories');
+            navigation.navigate('Login Option');
         },1500);
         return () => {
             clearTimeout(timer);

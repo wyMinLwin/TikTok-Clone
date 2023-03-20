@@ -3,10 +3,10 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const firstTimeSlice = createSlice({
     name: 'firstTime',
-    initialState: false,
+    initialState: true,
     reducers: {
         changeNotFirstTime(state) {
-            return !state;
+            return false;
         }
     }
 })
