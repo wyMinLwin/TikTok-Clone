@@ -17,16 +17,19 @@ const ProfileScreen = () => {
   const profileVideo = useSelector(state => state.profileVideo);
   const [videoToRender,setVideoToRender] = useState([]);
   const snapPoints = useMemo(() => ['30%%'], []);
-  const [profilePicVidUpload,setProfilePicVidUpload] = useState(false);
+  // const [profilePicVidUpload,setProfilePicVidUpload] = useState(false);
+  const [modelIndex,setModelIndex] = useState(-1)
   const closeModel = useCallback(() => {
-    setProfilePicVidUpload(prev => prev=false)
+    setModelIndex(prev => prev = -1)
     dispatch(navbarShowSlice.actions.showNavbarShow())
+    uploadModelRef.current.close()
   },[])
   const handleSheetChanges = useCallback((index) => {
     if (index === -1) {
       closeModel();
-    } 
+    }
   }, []);
+
   
   useEffect(() => {
     setVideoToRender(prev => {
@@ -42,7 +45,7 @@ const ProfileScreen = () => {
           data={videoToRender}
           keyExtractor={(item,index) => item.video_id}
           ListHeaderComponent = {
-            <ProfileData videoType={videoType} setVideoType={setVideoType} setProfilePicVidUpload={setProfilePicVidUpload} />
+            <ProfileData videoType={videoType} setModelIndex={setModelIndex} setVideoType={setVideoType} />
           }
           renderItem={(item,index) => (
           <>
@@ -67,10 +70,10 @@ const ProfileScreen = () => {
           )}
         />
         {
-          profilePicVidUpload &&
+          
           <BottomSheet
           enablePanDownToClose={true}
-          index={0}
+          index={modelIndex}
           ref = {uploadModelRef}
           snapPoints = {snapPoints}
           onChange= {handleSheetChanges}

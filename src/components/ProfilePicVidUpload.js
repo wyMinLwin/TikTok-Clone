@@ -1,18 +1,9 @@
 import { View, Text, Pressable } from 'react-native'
-import React, { useEffect } from 'react'
+import React from 'react'
 import Entypo from 'react-native-vector-icons/Entypo'
-import { useDispatch } from 'react-redux'
-import navbarShowSlice from '../store/navbarShow'
 
 const ProfilePicVidUpload = (props) => {
     
-    const dispatch = useDispatch()
-    useEffect(() => {
-        dispatch(navbarShowSlice.actions.hideNavbarShow())
-        return (() => {
-            dispatch(navbarShowSlice.actions.showNavbarShow())
-        })
-    },[])
   return (
     <View className='w-full h-fit bg-white absolute bottom-0 left-0 right-0 rounded-t-md py-2'>
       <Text className='mx-auto font-semibold p-3'>Change Profile Picture or Video</Text>
