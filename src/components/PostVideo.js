@@ -1,6 +1,6 @@
-import { View, Dimensions, Pressable, Text } from 'react-native'
+import { View, Dimensions, Pressable, } from 'react-native'
 import React,{ useState, useRef, useEffect, forwardRef, useImperativeHandle } from 'react'
-import { Video } from 'expo-av'
+import { Video, Audio } from 'expo-av'
 import Ionicon from 'react-native-vector-icons/Ionicons'
 import ToolsContainer from './ToolsContainer'
 import Comments from './Comments'
@@ -109,7 +109,9 @@ const PostVideo = forwardRef((props,parentRef) => {
   useEffect(() => {
     return () => unload();
   },[])
-  
+  useEffect(() => {
+    Audio.setAudioModeAsync({ playsInSilentModeIOS: true });
+  }, []);
   return (
     <>
       <Pressable  onPress={() => controlVideo()} >      
@@ -133,6 +135,7 @@ const PostVideo = forwardRef((props,parentRef) => {
           
           {/* video for user */}
           <Video 
+            
             audioPan={1}
             ref={videoRef}
             style={{position:'absolute',top:0,right:0,bottom:0,left:0,aspectRatio:16/9}}

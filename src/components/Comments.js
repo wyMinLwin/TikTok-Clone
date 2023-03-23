@@ -5,14 +5,12 @@ import Entypo from 'react-native-vector-icons/Entypo'
 import { useRef } from 'react'
 import BottomSheet, { BottomSheetTextInput } from '@gorhom/bottom-sheet';
 
-
 const Comments = (props) => {
     const commentsBoxRef = useRef(null);
     const snapPoints = useMemo(() => ['50%', '70%'], []);
 
     const handleSheetChanges = useCallback((index) => {
         if (index === -1) {
-            // controlCommentsVisibility();
             props.controlCommentsBoxVisibility();
         }
       }, []);
@@ -21,7 +19,10 @@ const Comments = (props) => {
     
     <>
         <View className='w-screen h-screen absolute top-0 right-0 bottom-0 left-0 flex-1 z-40'>
-            <Pressable className='w-screen h-screen' onPress={() => props.controlCommentsBoxVisibility()}></Pressable>
+            <Pressable className='w-screen h-screen' onPress={() => {
+                commentsBoxRef.current.close();
+                props.controlCommentsBoxVisibility()
+                }}></Pressable>
             <BottomSheet
                 enablePanDownToClose={true}
                 ref={commentsBoxRef}
@@ -43,9 +44,7 @@ const Comments = (props) => {
                     <View className='mr-3 pl-3 border-black' style={{borderLeftWidth:1}}>
                         <FontAwesome name='send' size={20} />
                     </View>
-                </View>
-
-                
+                </View>         
             </BottomSheet>
         </View>
     </>

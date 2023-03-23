@@ -1,7 +1,9 @@
-import { View, Text, Image, TouchableOpacity, TextInput, StyleSheet, Pressable } from 'react-native'
+import { View, Text, Image, TouchableOpacity } from 'react-native'
 import React from 'react'
 import Ionicon from 'react-native-vector-icons/Ionicons'
 import Entypo from 'react-native-vector-icons/Entypo'
+import CustomInput from '../components/CustomInput'
+import EditMenuButton from '../components/EditMenuButton'
 
 
 const EditProfileDataScreen = () => {
@@ -28,76 +30,40 @@ const EditProfileDataScreen = () => {
             </View>
         </View>
         <View>
+            
+            {/* Your Info */}
             <Text className='font-bold text-md text-gray-500 p-2 mt-1'>Your Info</Text>
-            <View className='flex flex-row justify-between p-3 bg-white border-gray-200' 
-            style={styles.customBorder}
-            >
-                <Text className='w-1/2 '>Name</Text>
-                <TextInput   value='Wai Yan Min Lwin' className='w-1/2 text-right font-semibold text-sm' />
-            </View>
-            <View className='flex flex-row justify-between p-3 bg-white border-gray-200' 
-            style={styles.customBorder}
-            >
-                <Text className='w-1/2 '>userID</Text>
-                <TextInput  value='@PRIME_WAIYAN'  className='w-1/2 text-right font-semibold text-sm' />
-            </View>
-            <View className='flex flex-row justify-between p-3 bg-white border-gray-200' 
-            style={styles.customBorder}
-            >
-                <Text className='w-1/2 '>Phone Number</Text>
-                <TextInput  value='+959 2323232323' className='w-1/2 text-right font-semibold text-sm' />
-            </View>
-            <View className='flex flex-row justify-between p-3 bg-white border-gray-200' 
-            style={styles.customBorder}
-            >
-                <Text className='w-1/2 '>Email</Text>
-                <TextInput  value='waiyanminlwin421@gmail.com' className='w-1/2 text-right font-semibold text-sm' />
-            </View>
-            <View className='flex flex-row justify-between p-3 bg-white border-gray-200' 
-            style={styles.customBorder}
-            >
-                <Text className='w-1/2 '>Gender</Text>
-                <TextInput  value='Male' className='w-1/2 text-right font-semibold text-sm' />
-            </View>
-            <View className='flex flex-row justify-between p-3 bg-white border-gray-200' 
-            style={styles.customBorder}
-            >
-                <Text className='w-1/2 '>Bio</Text>
-                <TextInput  value='Starboy⭐ ' className='w-1/2 text-right font-semibold text-sm' />
-            </View>
+            <CustomInput label={'Name'} defaultValue='Wai Yan Min Lwin' />
+            <CustomInput label={'userID'} defaultValue='@PRIME_WAIYAN' />
+            <CustomInput label={'Phone Number'} defaultValue='+95 232323' />
+            <CustomInput label={'Email'} defaultValue='waiyanminlwin421@gmail.com' /> 
+            <CustomInput label={'Gender'} defaultValue='Male' /> 
+            <CustomInput label={'Bio'} defaultValue='Starboy⭐' /> 
+            
 
             {/* Social */}
             <Text className='font-bold text-md text-gray-500 p-2 mt-1'>Social</Text>
-            <Pressable className='px-3 flex-row justify-between items-center bg-white rounded-md py-2'>
-                <Text>Instagram</Text>
-                <View className='flex-row justify-end items-center'>
-                    <Text className='font-semibold text-sm'>Add Instagram</Text>
-                    <Entypo name='chevron-right' size={24} />
-                </View>
-            </Pressable>
-            <Pressable className='px-3 flex-row justify-between items-center bg-white rounded-md py-2'>
-                <Text>Facebook</Text>
-                <View className='flex-row justify-end items-center'>
-                    <Text className='font-semibold text-sm'>Add Facebook</Text>
-                    <Entypo name='chevron-right' size={24} />
-                </View>
-            </Pressable>
-            <Pressable className='px-3 flex-row justify-between items-center bg-white rounded-md py-2'>
-                <Text>Instagram</Text>
-                <View className='flex-row justify-end items-center'>
-                    <Text className='font-semibold text-sm'>Add Instagram</Text>
-                    <Entypo name='chevron-right' size={24} />
-                </View>
-            </Pressable> 
+            <EditMenuButton 
+            onPress={() => {}}
+            leftLabel={'Instagram'}
+            rightLabel={'Add Instagram'}
+            rightIcon={() => <Entypo name='chevron-right' size={24} />}
+            />
+            <EditMenuButton 
+            onPress={() => {}}
+            leftLabel={'Facebook'}
+            rightLabel={'Add Facebook'}
+            rightIcon={() => <Entypo name='chevron-right' size={24} />}
+            />
+            <EditMenuButton 
+            onPress={() => {}}
+            leftLabel={'Twitter'}
+            rightLabel={'Add Twitter'}
+            rightIcon={() => <Entypo name='chevron-right' size={24} />}
+            />
         </View>
     </View>
   )
 }
-const styles = StyleSheet.create({
-    customBorder:{
-        borderWidth:0,
-        borderBottomWidth:0.3,       
-    }
-})
 
 export default EditProfileDataScreen
